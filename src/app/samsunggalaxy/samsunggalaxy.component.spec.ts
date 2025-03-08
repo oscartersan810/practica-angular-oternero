@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CoctelesComponent } from './cocteles.component';
+import { SamsunggalaxyComponent } from './samsunggalaxy.component';
 
-describe('CoctelesComponent', () => {
-  let component: CoctelesComponent;
-  let fixture: ComponentFixture<CoctelesComponent>;
+describe('SamsunggalaxyComponent', () => {
+  let component: SamsunggalaxyComponent;
+  let fixture: ComponentFixture<SamsunggalaxyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CoctelesComponent]
+      declarations: [SamsunggalaxyComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CoctelesComponent);
+    fixture = TestBed.createComponent(SamsunggalaxyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
