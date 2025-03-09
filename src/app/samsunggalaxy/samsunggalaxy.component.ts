@@ -9,20 +9,20 @@ import { IDispositivo } from '../idispositivo';
   styleUrls: ['./samsunggalaxy.component.css']
 })
 export class SamsunggalaxyComponent implements OnInit {
-  dispositivos: IDispositivo[] = [];
+  dispositivos: any[] = [];
 
   constructor(private samsungService: SamsunggalaxyService) {}
 
   ngOnInit(): void {
-    this.samsungService.obtenerTodos().subscribe(
-      (datos) => {
+    this.samsungService.obtenerTodos().subscribe({
+      next: (datos) => {
         this.dispositivos = datos;
         console.log(this.dispositivos);
       },
-      (error) => {
+      error: (error) => {
         console.error('Error al obtener los dispositivos', error);
       }
-    );
+    });
   }
 }
 

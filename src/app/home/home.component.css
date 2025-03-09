@@ -1,71 +1,67 @@
+/* Card */
+.card {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Título con fondo */
+.card-header {
+  background-color: #003366 !important; /* Azul elegante */
+}
+
 /* Título de bienvenida */
 h1 {
-    font-family: 'Roboto', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #003366; /* Azul oscuro y elegante */
-    letter-spacing: 2px;
-    line-height: 1.2;
-    margin-bottom: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Párrafo introductorio */
+p.lead {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+/* Descripción del proyecto */
+p.text-muted {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: #343a40;
+  line-height: 1.8;
+}
+
+/* Imagen representativa */
+img {
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajuste de márgenes */
+.container {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Responsividad */
+@media (max-width: 767px) {
+  h1 {
+      font-size: 2rem;
   }
-  
-  /* Párrafo introductorio */
   p.lead {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 300;
-    color: #6c757d; /* Gris claro para un toque sutil */
-    line-height: 1.6;
-    margin-bottom: 3rem;
+      font-size: 1rem;
   }
-  
-  /* Descripción del proyecto */
-  p.text-muted {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    color: #343a40; /* Gris oscuro elegante */
-    line-height: 1.8;
-    margin-top: 1rem;
-    padding: 0 15px;
-  }
-  
-  /* Imagen representativa */
-  img {
-    max-width: 100%;
-    border-radius: 15px; /* Bordes muy redondeados para un estilo más sofisticado */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil pero lujosa */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  
-  img:hover {
-    transform: scale(1.05); /* Efecto de zoom suave */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); /* Sombra más profunda al pasar el ratón */
-  }
-  
-  /* Ajuste de márgenes y espacio */
-  .container {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-  
-  /* Sección de bienvenida - Contenedor */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 2.5rem;
-  }
-  
-  /* Para una mejor visualización en móviles */
-  @media (max-width: 767px) {
-    h1 {
-      font-size: 2.5rem;
-    }
-    p.lead {
-      font-size: 1.125rem;
-    }
-    .col-md-6 {
-      margin-top: 1rem;
-    }
-  }
-  
+}

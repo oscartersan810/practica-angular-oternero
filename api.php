@@ -2,11 +2,6 @@
 require_once "config.php"; // Incluir la configuración de la base de datos
 
 header("Access-Control-Allow-Origin: *"); // Permite que cualquier origen haga peticiones a la API
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE"); // Métodos HTTP permitidos
-header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Cabeceras permitidas
-
-// Establecer el encabezado para la respuesta JSON
-header('Content-Type: application/json; charset=utf-8');
 
 // Iniciar la conexión a la base de datos usando PDO
 try {
@@ -22,38 +17,33 @@ try {
 // Inicializar un arreglo para almacenar los dispositivos
 $dispositivos = [];
 
-// Comprobar si se proporcionaron parámetros de búsqueda
-$whereClauses = [];
-$params = [];
-
-if (isset($_GET['n']) && !empty($_GET['n'])) {
-    $whereClauses[] = "nombre LIKE :nombre";
-    $params[':nombre'] = "%" . $_GET['n'] . "%"; // Filtro por nombre
-}
-
-if (isset($_GET['a']) && !empty($_GET['a'])) {
-    $whereClauses[] = "anio = :anio";
-    $params[':anio'] = $_GET['a']; // Filtro por año
-}
-
-// Construir la consulta con filtros, si existen
+// Construir la consulta base
 $sql = "SELECT id, nombre, modelo, versionAndroid, versionActualizada, interfaz, anio, imagen FROM samsunggalaxy";
 
-if (count($whereClauses) > 0) {
-    $sql .= " WHERE " . implode(" AND ", $whereClauses);
+// Agregar filtros si existen
+$where = [];
+
+if (isset($_GET['n'])) {
+    $nombre = $_GET['n'];
+    $where[] = "nombre LIKE '%$nombre%'";
 }
 
-// Preparar la consulta
-$consulta = $conexion->prepare($sql);
+if (isset($_GET['a'])) {
+    $anio = $_GET['a']; 
+    $where[] = "anio = $anio";
+}
 
-// Ejecutar la consulta con los parámetros
-$consulta->execute($params);
+if (!empty($where)) {
+    $sql .= " WHERE " . implode(" AND ", $where);
+}
 
+// Ejecutar la consulta
+$consulta = $conexion->query($sql);
 // Recuperar los resultados
 while ($reg = $consulta->fetch(PDO::FETCH_ASSOC)) {
     $dispositivos[] = $reg;
 }
 
-// Devolver los resultados en formato JSON
+header('Content-Type: application/json; charset=utf-8');
 echo json_encode($dispositivos, JSON_PRETTY_PRINT);
 ?>

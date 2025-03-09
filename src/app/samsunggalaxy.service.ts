@@ -8,6 +8,7 @@ import { IDispositivo } from './idispositivo';
 })
 export class SamsunggalaxyService {
   private apiUrl = 'http://localhost/practica-angular-oternero/api.php';
+  // private apiUrl = '../../../api.php';
 
   constructor(private http: HttpClient) {}
 
@@ -17,14 +18,14 @@ export class SamsunggalaxyService {
   }
 
   // Obtener dispositivos filtrados por nombre y/o año
-  obtenerDispositivos(nombre: string = '', año: number | null = null): Observable<IDispositivo[]> {
+  obtenerDispositivos(nombre: string = '', anio: number | null = null): Observable<IDispositivo[]> {
     let params = new HttpParams();
 
     if (nombre) {
       params = params.set('n', nombre); // Filtro por nombre
     }
-    if (año) {
-      params = params.set('a', año.toString()); // Filtro por año
+    if (anio) {
+      params = params.set('a', anio.toString()); // Filtro por año
     }
 
     return this.http.get<IDispositivo[]>(this.apiUrl, { params });
