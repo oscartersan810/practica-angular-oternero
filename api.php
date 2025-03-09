@@ -1,44 +1,59 @@
 <?php
-header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *");
+require_once "config.php"; // Incluir la configuración de la base de datos
 
-include 'config.php'; // Asegúrate de que config.php contiene la conexión a la BD
+header("Access-Control-Allow-Origin: *"); // Permite que cualquier origen haga peticiones a la API
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE"); // Métodos HTTP permitidos
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Cabeceras permitidas
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Establecer el encabezado para la respuesta JSON
+header('Content-Type: application/json; charset=utf-8');
 
-if ($conn->connect_error) {
-    die(json_encode(["error" => "Conexión fallida: " . $conn->connect_error]));
+// Iniciar la conexión a la base de datos usando PDO
+try {
+    // Crear una nueva conexión PDO usando las variables del archivo de configuración
+    $conexion = new PDO("mysql:host=$db_host;dbname=$db_nombre;charset=$db_charset", $db_usuario, $db_contraseña);
+    // Configurar el modo de error de PDO
+    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    // Si hay un error en la conexión, se muestra un mensaje
+    die(json_encode(["error" => "Error en la conexión: " . $e->getMessage()]));
 }
 
-// Verificar si se pasó el filtro por año (a)
-if (isset($_GET['a'])) {
-    $año = intval($_GET['a']); // Convertir a entero
-    $sql = "SELECT * FROM samsunggalaxy WHERE año = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $año);
-}
-// Verificar si se pasó el filtro por nombre (n)
-elseif (isset($_GET['n'])) {
-    $nombre = "%" . $_GET['n'] . "%"; // Permitir búsqueda parcial
-    $sql = "SELECT * FROM samsunggalaxy WHERE nombre LIKE ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $nombre);
-}
-// Si no hay filtros, obtener todos los registros de la tabla samsunggalaxy
-else {
-    $sql = "SELECT * FROM samsunggalaxy";
-    $stmt = $conn->prepare($sql);
+// Inicializar un arreglo para almacenar los dispositivos
+$dispositivos = [];
+
+// Comprobar si se proporcionaron parámetros de búsqueda
+$whereClauses = [];
+$params = [];
+
+if (isset($_GET['n']) && !empty($_GET['n'])) {
+    $whereClauses[] = "nombre LIKE :nombre";
+    $params[':nombre'] = "%" . $_GET['n'] . "%"; // Filtro por nombre
 }
 
-$stmt->execute();
-$result = $stmt->get_result();
-$data = [];
-
-while ($row = $result->fetch_assoc()) {
-    $data[] = $row;
+if (isset($_GET['a']) && !empty($_GET['a'])) {
+    $whereClauses[] = "anio = :anio";
+    $params[':anio'] = $_GET['a']; // Filtro por año
 }
 
-echo json_encode($data, JSON_PRETTY_PRINT);
-$stmt->close();
-$conn->close();
+// Construir la consulta con filtros, si existen
+$sql = "SELECT id, nombre, modelo, versionAndroid, versionActualizada, interfaz, anio, imagen FROM samsunggalaxy";
+
+if (count($whereClauses) > 0) {
+    $sql .= " WHERE " . implode(" AND ", $whereClauses);
+}
+
+// Preparar la consulta
+$consulta = $conexion->prepare($sql);
+
+// Ejecutar la consulta con los parámetros
+$consulta->execute($params);
+
+// Recuperar los resultados
+while ($reg = $consulta->fetch(PDO::FETCH_ASSOC)) {
+    $dispositivos[] = $reg;
+}
+
+// Devolver los resultados en formato JSON
+echo json_encode($dispositivos, JSON_PRETTY_PRINT);
 ?>

@@ -1,13 +1,9 @@
 <?php
-$host = 'localhost';
-$dbname = 'galeriasamsung';
-$username = 'root';
-$password = '';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
-}
+// Datos de conexión a la base de datos
+$db_host = "localhost";      // Host de la base de datos
+$db_nombre = "galeriasamsung"; // Nombre de la base de datos
+$db_usuario = "root";        // Usuario de la base de datos
+$db_contraseña = "";         // Contraseña de la base de datos
+$db_charset = "utf8";        // Juego de caracteres para la conexión
 ?>
+

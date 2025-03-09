@@ -1,0 +1,15 @@
+/* Estilo adicional para las tarjetas */
+.card {
+    border-radius: 12px;
+  }
+  
+  /* Sombra más suave */
+  .card.shadow-lg {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para el pie de página */
+  .card-footer {
+    background-color: #f8f9fa;
+  }
+  

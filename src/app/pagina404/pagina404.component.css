@@ -1,0 +1,18 @@
+/* Sombra en el contenedor */
+.container {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 3rem;
+    background-color: #f9f9f9;
+  }
+  
+  /* Color de fondo para la sección de error */
+  h1, h3 {
+    color: #d9534f; /* Rojo intenso */
+  }
+  
+  a.btn {
+    font-size: 1.1rem;
+    padding: 10px 20px;
+  }
+  

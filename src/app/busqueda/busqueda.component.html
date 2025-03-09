@@ -1,1 +1,56 @@
-<p>busqueda works!</p>
+<div class="container mt-5">
+    <h2 class="text-center mb-5 font-weight-bold">Buscar Dispositivos Samsung Galaxy</h2>
+
+    <!-- Formulario de búsqueda con dos campos -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-5 mb-4">
+            <!-- Búsqueda por nombre -->
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Buscar por nombre" 
+                    [(ngModel)]="searchName" 
+                    (ngModelChange)="onSearchChange()" 
+                />
+            </div>
+        </div>
+        <div class="col-md-5 mb-4">
+            <!-- Búsqueda por año -->
+            <div class="input-group">
+                <input 
+                    type="number" 
+                    class="form-control" 
+                    placeholder="Buscar por año" 
+                    [(ngModel)]="searchYear" 
+                    (ngModelChange)="onSearchChange()"
+                    max="2025"
+                    min="2009" 
+                />
+            </div>
+        </div>
+    </div>
+
+    <!-- Resultados de la búsqueda -->
+    <div *ngIf="dispositivos.length > 0" class="device-list">
+        <h2 class="text-center mb-4">Dispositivos Samsung Galaxy</h2>
+        <div class="device-grid">
+            <div *ngFor="let dispositivo of dispositivos" class="device-card">
+                <img [src]="dispositivo.imagen" alt="{{ dispositivo.nombre }}" class="device-image" />
+                <div class="device-info">
+                    <h3>{{ dispositivo.nombre }}</h3>
+                    <p><strong>Modelo:</strong> {{ dispositivo.modelo }}</p>
+                    <p><strong>Versión de Android:</strong> {{ dispositivo.versionAndroid }}</p>
+                    <p><strong>Última actualización:</strong> {{ dispositivo.versionActualizada }}</p>
+                    <p><strong>Interfaz:</strong> {{ dispositivo.interfaz }}</p>
+                    <p><strong>Año:</strong> {{ dispositivo.anio }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje si no se encuentran resultados -->
+    <div *ngIf="dispositivos.length === 0" class="alert alert-warning text-center">
+        No se encontraron dispositivos con esos criterios.
+    </div>
+</div>

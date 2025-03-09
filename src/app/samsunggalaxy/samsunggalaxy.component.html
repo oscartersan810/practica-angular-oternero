@@ -1,1 +1,19 @@
-<p>samsunggalaxy works!</p>
+<div class="container py-5">
+  <h2 class="text-center text-primary font-weight-bold mb-5">Dispositivos Samsung Galaxy</h2>
+
+  <div class="device-grid">
+    <div *ngFor="let dispositivo of dispositivos" class="device-card">
+      <div class="device-card-body">
+        <img [src]="dispositivo.imagen" alt="{{ dispositivo.nombre }}" class="device-image">
+        <div class="device-info">
+          <h3 class="device-name">{{ dispositivo.nombre }}</h3>
+          <p><strong>Modelo:</strong> {{ dispositivo.modelo }}</p>
+          <p><strong>Versión de Android:</strong> {{ dispositivo.versionAndroid }}</p>
+          <p><strong>Última actualización:</strong> {{ dispositivo.versionActualizada }}</p>
+          <p><strong>Interfaz:</strong> {{ dispositivo.interfaz }}</p>
+          <p><strong>Año:</strong> {{ dispositivo.anio }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

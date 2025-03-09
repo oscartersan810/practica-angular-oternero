@@ -1,0 +1,52 @@
+/* Navbar */
+.navbar {
+    background-color: #1a73e8; /* Azul Samsung */
+  }
+  
+  .navbar-brand {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.75rem;
+  }
+  
+  .nav-link {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .nav-link:hover {
+    color: #c4c4c4; /* Gris claro para hover */
+  }
+  
+  /* Botones y dropdown */
+  .navbar-toggler-icon {
+    background-color: white; /* Icono de hamburguesa blanco */
+  }
+  
+  /* Estilo para el dropdown */
+  .dropdown-menu {
+    background-color: #ffffff;
+    border-radius: 5px;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f1f1f1;
+    color: #1a73e8;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #333333;
+    color: white;
+  }
+  
+  /* Enlaces del footer */
+  footer a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    color: #1a73e8; /* Azul Samsung para hover */
+  }
+  
