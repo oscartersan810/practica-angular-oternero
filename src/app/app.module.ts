@@ -11,6 +11,9 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
 import { HomeComponent } from './home/home.component';
 import { CrudComponent } from './crud/crud.component';
 import { provideHttpClient } from '@angular/common/http';
+import { CrudmodifyComponent } from './crudmodify/crudmodify.component';
+import { TruncatePipe } from './truncate.pipe';
+import { FormatPipe } from './format.pipe';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { provideHttpClient } from '@angular/common/http';
     Pagina404Component,
     BusquedaComponent,
     HomeComponent,
-    CrudComponent
+    CrudComponent,
+    CrudmodifyComponent,
+    TruncatePipe,
+    FormatPipe
   ],
   imports: [
     BrowserModule,

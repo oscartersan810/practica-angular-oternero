@@ -6,7 +6,7 @@
       <div class="device-card-body">
         <img [src]="dispositivo.imagen" alt="{{ dispositivo.nombre }}" class="device-image">
         <div class="device-info">
-          <h3 class="device-name text-center fs-5">{{ dispositivo.nombre | uppercase }}</h3>
+          <h3 class="device-name text-center fs-5">{{ dispositivo.nombre | format: 'mayusculas' }}</h3>
           <p><strong>Modelo:</strong> {{ dispositivo.modelo }}</p>
           <p><strong>Versión de Android:</strong> {{ dispositivo.versionAndroid }}</p>
           <p><strong>Última actualización:</strong> {{ dispositivo.versionActualizada }}</p>

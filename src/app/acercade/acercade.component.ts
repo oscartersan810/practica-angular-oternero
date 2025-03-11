@@ -12,6 +12,6 @@ export class AcercadeComponent {
     descripcion: 'Este proyecto tiene como objetivo mostrar dispositivos Samsung Galaxy con sus respectivas características, como modelo, versión de Android, año, etc.',
     version: '1.0.0',
     api: 'API Local',
-    desarrollador: 'Oscar Ternero Sánchez 2ºDAW',
+    desarrollador: 'oscar ternero sanchez 2ºDAW',
   };
 }

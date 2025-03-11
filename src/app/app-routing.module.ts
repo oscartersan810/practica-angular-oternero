@@ -6,6 +6,7 @@ import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AcercadeComponent } from './acercade/acercade.component';
 import { CrudComponent } from './crud/crud.component';
 import { Pagina404Component } from './pagina404/pagina404.component';
+import { CrudmodifyComponent } from './crudmodify/crudmodify.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'busqueda', component: BusquedaComponent},
   {path: 'acercade', component: AcercadeComponent},
   {path: 'crud', component: CrudComponent},
+  {path: 'crudmodify', component: CrudmodifyComponent},
   {path: '**', component: Pagina404Component},
 
 ];

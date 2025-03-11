@@ -1,1 +1,23 @@
-<p>crud works!</p>
+<div class="container">
+    <h1 class="title">Gestión de Productos</h1>
+  
+    <!-- Lista de productos -->
+    <h2 class="subtitle">Lista de Productos</h2>
+    <div class="table-container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Descripción</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos">
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precio | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

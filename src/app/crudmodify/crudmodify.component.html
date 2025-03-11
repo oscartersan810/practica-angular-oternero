@@ -1,0 +1,40 @@
+<div class="container">
+    <h1 class="title">Gestión de Productos</h1>
+
+    <!-- Formulario para insertar o actualizar un producto -->
+    <form (ngSubmit)="guardar()" class="form">
+        <div class="form-group">
+            <label for="id">Id:</label>
+            <input type="text" id="id" [(ngModel)]="producto.id" name="id" required class="input" readonly>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" [(ngModel)]="producto.descripcion" name="descripcion" required class="input">
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" [(ngModel)]="producto.precio" name="precio" required class="input">
+        </div>
+        <button type="submit" class="btn">{{ producto.id ? 'Actualizar' : 'Guardar' }}</button>
+    </form>
+
+    <!-- Lista de productos -->
+    <h2 class="subtitle">Lista de Productos</h2>
+    <ul class="product-list">
+        <li *ngFor="let producto of productos" class="product-item">
+            <span>{{ producto.id }} - {{ producto.descripcion }} - {{ producto.precio | currency }}</span>
+            <div class="btn-group">
+                <button (click)="eliminar(producto.id)" class="btn btn-danger">Eliminar</button>
+                <button (click)="cargarProducto(producto)" class="btn btn-edit">Editar</button>
+            </div>
+        </li>
+    </ul>
+
+    <!-- Formulario para obtener un producto por ID -->
+    <div class="form-group">
+        <label for="idProducto">ID del Producto:</label>
+        <input type="number" id="idProducto" [(ngModel)]="idProducto" name="idProducto" class="input">
+        <button (click)="obtenerPorId(idProducto)" class="btn btn-search">Buscar</button>
+
+    </div>
+</div>

@@ -6,11 +6,11 @@
       <div class="card-body">
         <div class="mb-3">
           <h5 class="card-title">Descripción del Proyecto</h5>
-          <p class="card-text">{{ acercaDeInfo.descripcion }}</p>
+          <p class="card-text">{{ acercaDeInfo.descripcion}}</p>
         </div>
         <div class="mb-3">
           <h5 class="card-title">Versión</h5>
-          <p class="card-text">{{ acercaDeInfo.version }}</p>
+          <p class="card-text">{{ acercaDeInfo.version | truncate}}</p>
         </div>
         <div class="mb-3">
           <h5 class="card-title">API utilizada</h5>
@@ -18,7 +18,7 @@
         </div>
         <div class="mb-3">
           <h5 class="card-title">Desarrollado por</h5>
-          <p class="card-text">{{ acercaDeInfo.desarrollador }}</p>
+          <p class="card-text">{{ acercaDeInfo.desarrollador | format: 'capitalizar' }}</p>
         </div>
       </div>
       <div class="card-footer text-muted text-center">
