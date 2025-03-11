@@ -26,7 +26,7 @@ import { provideHttpClient } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule  // Agregar FormsModule aquí
+    FormsModule  
     //HttpClientModule
   ],
   providers: [provideHttpClient()],
