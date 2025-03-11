@@ -37,6 +37,8 @@ if (!empty($where)) {
     $sql .= " WHERE " . implode(" AND ", $where);
 }
 
+
+
 // Ejecutar la consulta
 $consulta = $conexion->query($sql);
 // Recuperar los resultados
